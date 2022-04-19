@@ -28,9 +28,24 @@
                 overflow-x: hidden;
                 overflow-y: auto;
                 text-align:justify;
-            }
+            }#hover {
+              background-color: orange;
+              color: black;
+              border: 3px solid blue;
+              transform: scale(1.1);
+            }#vbutton{
+              background-color: rgba(230, 230, 250, 0.7);
+              border: 1px solid rgba(0, 0, 0, 0.8);
+              padding: 15px;
+              text-align: center;
+              border: 5px solid rgba(0, 0, 0, 0.8);
+              border: 1px solid #333;
+              box-shadow: 8px 8px 5px #444;
+              background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
+          }
         </style>
     </head>
+  
     <body>
         <div id="centered_blue">
         <h1>Administrator Page</h1> </div>
@@ -46,12 +61,13 @@
     <li> User: bio. birthday, email, followers[], following [], friends  [], name, notification enabled, posts(name), private, profile image, reposted, adn tagged in.</li>
     <li>Groups: bio, groupname, members, owner, posts, privacy,profileimagepath, size </li>
     <li>Posts: comment count, comments, comment author, content, commentdate, content, likedby, photo, postauthor, postdate, postid, repostcouunt, and repostedby</li>
-    <img src="user_schema.JPG" title="User Schema" width="500" height="500">
-    <img src="groups_schema.JPG" title="Groups Schema" width="500" height="500">
-    <img src="posts_schema.JPG" title="Posts Schema" width="500" height="500">
+    <img src="res/assets/user_schema.JPG" title="User Schema" width="500" height="500">
+    <img src="res/assets/groups_schema.JPG" title="Groups Schema" width="500" height="500">
+    <img src="res/assets/posts_schema.JPG" title="Posts Schema" width="500" height="500">
 </header>
 <h3>
     <hr>
+    <div id = "vbutton"><div id = "hover"><div id ="txt"><h2>Data Analytics</h2></div></div></div>
     <div id ="txt"><h2>Data Analytics</h2></div>
     <div class = "scroll">
         I imagine the project is going to contain a wide array of data, so a scrollable location, we can set the dimensions to view a particular users, group or post analytics, would be pretty cool.
