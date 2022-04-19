@@ -14,19 +14,6 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const database = firebase.database()
 
-/*const loginForm = document.querySelector('#login-form');
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const email = loginForm['email'].value;
-    const password = loginForm['password'].value;
-
-    auth.signInWithEmailAndPassword(email, password).then( cred => {
-        console.log(cred.user)
-    }) 
-
-})*/
-
 function login () {
 
         var logStatus = new Boolean(false);
@@ -34,16 +21,13 @@ function login () {
         email = document.getElementById('email').value
         password = document.getElementById('password').value
 
-
         auth.signInWithEmailAndPassword(email, password)
         .then(function() {
             var user = auth.currentUser
 
-            var database_ref = database.ref()
+            //var database_ref = database.ref()
 
             console.log(user.email, user.password)
-
-
             
             //database_ref.child('users/'+user.uid).update(user_data)
             logStatus = true
@@ -54,9 +38,7 @@ function login () {
             if(logStatus == true) {
                 homeRedirect();
             }
-            
-
-
+    
         }) 
         .catch(function(error) {
             var error_code = error.code
@@ -95,8 +77,7 @@ function validate_email(email) {
   function validate_field(field) {
     if (field == null) {
       return false
-    }
-  
+    } 
     if (field.length <= 0) {
       return false
     } else {
