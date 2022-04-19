@@ -36,7 +36,7 @@ function login () {
 
             //alert('User Logged In!!')
             if(logStatus == true) {
-                homeRedirect();
+                dataRedirect();
             }
     
         }) 
@@ -49,6 +49,10 @@ function login () {
     
 }
 
+function dataRedirect(){
+  console.log("I was clicked")
+  location.replace("userData.html")
+}
 function homeRedirect() {
     console.log("I was clicked")
     location.replace("home.html")
