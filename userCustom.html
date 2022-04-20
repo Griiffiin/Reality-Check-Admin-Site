@@ -1,20 +1,56 @@
 <html>
-    <h1>User Customizability<h1></h1>
-    <script src="functionholder.js"></script>
-    <head>
-            <button id="goToHome" type = "button" class="btn btn-md btn-dark " onclick="homeRedirect()">Home Page</button>
-    </head>
+<button id="goToHome" type="button" class="btn btn-md btn-dark " onclick="homeRedirect()" >Home Page</button>
+<div id="centered_blue"><h1>User Customizability</h1></div>
+<div id="txt"><div id="orange"><h2>Customize User Features</h2></div></div>
+<script src="functionholder.js"></script>
+<hr>
 
-     
-    <!-------------------------Imports and configuration-->
-    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Customizability</title>
+    <style>
+        label {
+            display: inline-block;
+            width: 80px
+        }
+    </style>
+</head>
 
+<body>
+    <label>username</label><input id="Namebox" type="text">
+    <hr>
+    <label>email</label><input id="Rollbox" type="text">
+    <hr>
+    <label>password</label><input id="Secbox" type="text">
+    <hr>
+    <button id="Insbtn">Insert</button>
+    <button id="Selbtn">Select</button>
+    <button id="Updbtn">Update</button>
+    <button id="Delbtn">Populate user data below</button>
+
+    <div class="content">
+        <form id="Add-user-form"></form>
+        <u1 id="user-list"> </u1>
+    </div>
+</body>
+
+
+
+
+
+<!-------------------------Imports and configuration-->
 <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
-    import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js";
-    import { getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteField } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore.js";
-    var firebaseConfig = {
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
         apiKey: "AIzaSyA0uYjH7kFeD3c8yR8SVvNBOKXHxILgPIw",
         authDomain: "realitycheck-d5694.firebaseapp.com",
         databaseURL: "https://realitycheck-d5694-default-rtdb.firebaseio.com",
@@ -24,12 +60,116 @@
         appId: "1:143506997240:web:4665b5bbe4fdddf9b3200d",
         measurementId: "G-DYQ8X7NQ6K"
     };
+
+    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    console.log(db);
-    db.collection("Users");
-    db.collection('/Users').get().then((snapshot)=>{
-        console.log(snapshot.docs);
-    })
+    const analytics = getAnalytics(app);
+
+    import { getFirestore, doc, getDoc, setDoc, collection, query, getDocs, where, addDoc, updateDoc, deleteField } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore.js";
+    const db = getFirestore();
+    let Insbtn = document.getElementById("Insbtn");
+    let selbtn = document.getElementById("Selbtn");
+    let updbtn = document.getElementById("Updbtn");
+    let delbtn = document.getElementById("Delbtn");
+
+    async function AddDocument_AutoId() {
+        var ref = collection(db, "Test");
+        const docRef = await addDoc(ref, {
+            NameofStf: Namebox.value,
+            RollNo: Rollbox.value,
+            Section: Secbox.value
+        }).then(() => {
+            alert("data added asuccessfully");
+        }).catch((error) => {
+            alert("Unsuccessful operation,error:", error);
+        })
+    }
+
+    /* async function getMarkers() {
+        var ref = collection(db, "Users");
+        var ref = collection(db, "Users");
+        const docRef = await getDocs(ref);
+        console.log(docRef);
+    } */
+
+    //getting a document
+    async function GetADocument() {
+        var ref = doc(db, "Users", "1345");
+        const docSnap = await getDoc(ref);
+        if (docSnap.exists()) {
+            //NameBox.value = docSnap.data(); how to get specific value of data.
+            console.log("Document data:", docSnap.data());
+            alert("User 1345 was found");
+        }
+        else {
+            alert("no such document");
+        }
+    }
+
+    //create an element and render user, this is mme trying to experiment with printing the console.log inthe getUserCollection into the html.
+    async function renderUser(doc) {
+        let li = document.createElement('li');
+        let username = document.createElement('span');
+        let bio = document.createElement('span');
+
+        li.setAttribute('data.id', doc.id);
+        username.textContent = doc.data().username;
+        bio.textContent = doc.data().bio;
+
+        li.appendChild(username);
+        li.appendChild(bio);
+        userList.appendChild(li);
+    }
+
+
+
+    //getting a full collection
+    async function getUserCollection() {
+        const q = query(collection(db, "Users"));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+
+            console.log(doc.id, " => ", doc.data()); //This is how you map the data on the page
+            // document.write(doc.data()); play around with doc.write to print the dat on the html page.
+
+            //Try to call the render to then print on the html.
+            renderUser(doc);
+        });
+    }
+
+    //buttons testing
+    Insbtn.addEventListener("click", AddDocument_AutoId);
+    Selbtn.addEventListener("click", GetADocument);
+    Delbtn.addEventListener("click", getUserCollection)
+    const userList = document.querySelector('#user-list');
+
 </script>
+
+
 </html>
+
+<style>
+    #centered_blue {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: white;
+        background-color: blue;
+        text-align: center;
+        font-size: 25px;
+        padding-bottom: 20px;
+        padding-top: 5px;
+        height: 100px;
+    }
+
+    #orange {
+        background-color: orange;
+        color: black;
+        border: 5px solid blue;
+        text-align: center;
+    }
+
+    #txt {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 25px;
+    }
+</style>
