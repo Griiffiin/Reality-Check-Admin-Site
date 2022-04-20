@@ -1,3 +1,4 @@
+
 var firebaseConfig = {
     apiKey: "AIzaSyA0uYjH7kFeD3c8yR8SVvNBOKXHxILgPIw",
     authDomain: "realitycheck-d5694.firebaseapp.com",
