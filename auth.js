@@ -38,7 +38,7 @@ function login () {
 
             //alert('User Logged In!!')
             if(logStatus == true) {
-                dataRedirect();
+                homeRedirect();
             }
     
         }) 
