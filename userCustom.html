@@ -22,16 +22,32 @@
 </head>
 
 <body>
-    <label>username</label><input id="Namebox" type="text">
+    <label>username</label><input id="usernamebox" type="text">
+    <button id="Selbtn">Check DB for username</button>
     <hr>
-    <label>email</label><input id="Rollbox" type="text">
+    <label>bio</label><input id="biobox" type="text">
     <hr>
-    <label>password</label><input id="Secbox" type="text">
+    <label>birthday</label><input id="birthdaybox" type="text">
     <hr>
-    <button id="Insbtn">Insert</button>
-    <button id="Selbtn">Select</button>
-    <button id="Updbtn">Update</button>
+    <label>email</label><input id="emailbox" type="text">
+    <hr>
+    <label>followers</label><input id="followersbox" type="text">
+    <hr>
+    <label>following</label><input id="followingbox" type="text">
+    <hr>
+    <label>friends</label><input id="friendsbox" type="text">
+    <hr>
+    <label>post</label><input id="postbox" type="text">
+    <hr>
+    <label>reposted</label><input id="repostedbox" type="text">
+    <hr>
+    <label>taggedin</label><input id="taggedinbox" type="text">
+    <hr>
+    <label>uid</label><input id="uidbox" type="text">
+    <hr>
     <button id="Delbtn">Populate user data below</button>
+    <button id="Insbtn">Insert</button>
+    <button id="Updbtn">Update</button>
 
     <div class="content">
         <form id="Add-user-form"></form>
@@ -78,9 +94,16 @@
     async function AddDocument_AutoId() {
         var ref = collection(db, "Test");
         const docRef = await addDoc(ref, {
-            NameofStf: Namebox.value,
-            RollNo: Rollbox.value,
-            Section: Secbox.value
+            bio: biobox.value,
+            birthday: birthdaybox.value,
+            email:emailbox.value,
+            followers: followersbox.value,
+            following: followingbox.value,
+            friends: friendsbox.value,
+
+            password: passwordbox.value,
+            email: emailbox.value,
+            
         }).then(() => {
             alert("data added asuccessfully");
         }).catch((error) => {
@@ -97,12 +120,23 @@
 
     //getting a document
     async function GetADocument() {
-        var ref = doc(db, "Users", "1345");
+        var ref = doc(db, "Users", usernamebox.value);
         const docSnap = await getDoc(ref);
         if (docSnap.exists()) {
             //NameBox.value = docSnap.data(); how to get specific value of data.
+            usernamebox.value = docSnap.data().username;
+            biobox.value = docSnap.data().bio;
+            birthdaybox.value = docSnap.data().birthday;
+            emailbox.value= docSnap.data().email;
+            followersbox.value= docSnap.data().followers;
+            followingbox.value= docSnap.data().following;
+            friendsbox.value= docSnap.data().friends;
+            postbox.value= docSnap.data().post;
+            repostedbox.value = docSnap.data().repost;
+            taggedinbox.value = docSnap.data().taggedIn;
+            uidbox.value = docSnap.data().uid;
             console.log("Document data:", docSnap.data());
-            alert("User 1345 was found");
+            alert("User: " + usernamebox.value + " has been located");
         }
         else {
             alert("no such document");
@@ -126,7 +160,7 @@
 
 
 
-    //getting a full collection
+    //getting a full collection of Users
     async function getUserCollection() {
         const q = query(collection(db, "Users"));
         const querySnapshot = await getDocs(q);
@@ -141,7 +175,7 @@
         });
     }
 
-    //buttons testing
+    //This is where you can have specific button events when clicked, call some function.
     Insbtn.addEventListener("click", AddDocument_AutoId);
     Selbtn.addEventListener("click", GetADocument);
     Delbtn.addEventListener("click", getUserCollection)
