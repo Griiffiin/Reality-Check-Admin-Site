@@ -45,6 +45,8 @@
     <hr>
     <label>uid</label><input id="uidbox" type="text">
     <hr>
+    <label>postsclicked</label><input id="postsclickedbox" type="text">
+    <hr>
     <button id="Delbtn">Populate user data below</button>
     <button id="Insbtn">Insert</button>
     <button id="Updbtn">Update</button>
@@ -53,6 +55,116 @@
         <form id="Add-user-form"></form>
         <u1 id="user-list"> </u1>
     </div>
+
+
+    <div id="wrapper">
+        <div class="chart">
+          <div id="txt"><h4> As a team we need to try to link all of the parameters in the script to insert into the table BELOW ! -matthew benvenuto </h4></div>
+          <table id="data-table1" border="1" cellpadding="10" cellspacing="0" summary="The effects of the zombie outbreak on the populations
+              of endangered species from 2012 to 2016">
+            <caption>User Table</caption>
+            <thead>
+              <tr>
+                <td>&nbsp;</td>
+                <th scope="col">Matthew Benvenuto</th>
+                <th scope="col">Griffin</th>
+                <th scope="col">Aditye</th>
+                <th scope="col">Griffin</th>
+                <th scope="col">Prithvi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Bio</th>
+                <td>This is my bio.......</td>
+                <td>comp sci major</td>
+                <td>6240</td>
+                <td>3520</td>
+                <td>2240</td>
+              </tr>
+              <tr>
+                <th scope="row">birthday</th>
+                <td>08/14/1999</td>
+                <td>11/10/1999</td>
+                <td>6240</td>
+                <td>5120</td>
+                <td>2640</td>
+              </tr>
+              <tr>
+                <th scope="row">email</th>
+                <td>mattbenv@udel.edu</td>
+                <td>wgriffin@udel.edu</td>
+                <td>2880</td>
+                <td>4720</td>
+                <td>7520</td>
+              </tr>
+              <tr>
+                <th scope="row">followers</th>
+                <td>mattbenv@udel.edu</td>
+                <td>wgriffin@udel.edu</td>
+                <td>2880</td>
+                <td>4720</td>
+                <td>7520</td>
+              </tr>
+              <tr>
+                <th scope="row">following</th>
+                <td>mattbenv@udel.edu</td>
+                <td>wgriffin@udel.edu</td>
+                <td>2880</td>
+                <td>4720</td>
+                <td>7520</td>
+              </tr>
+              <tr>
+                <th scope="row">friends</th>
+                <td>mattbenv@udel.edu</td>
+                <td>wgriffin@udel.edu</td>
+                <td>2880</td>
+                <td>4720</td>
+                <td>7520</td>
+              </tr>
+              <tr>
+                <th scope="row">posts</th>
+                <td>mattbenv@udel.edu</td>
+                <td>wgriffin@udel.edu</td>
+                <td>2880</td>
+                <td>4720</td>
+                <td>7520</td>
+              </tr>
+              <tr>
+                <th scope="row">reposted</th>
+                <td>mattbenv@udel.edu</td>
+                <td>wgriffin@udel.edu</td>
+                <td>2880</td>
+                <td>4720</td>
+                <td>7520</td>
+              </tr>
+              <tr>
+                <th scope="row">taggedin</th>
+                <td>mattbenv@udel.edu</td>
+                <td>wgriffin@udel.edu</td>
+                <td>2880</td>
+                <td>4720</td>
+                <td>7520</td>
+              </tr>
+              <tr>
+                <th scope="row">uid</th>
+                <td>mattbenv@udel.edu</td>
+                <td>wgriffin@udel.edu</td>
+                <td>2880</td>
+                <td>4720</td>
+                <td>7520</td>
+              </tr>
+              <tr>
+                <th scope="row">postsclicked</th>
+                <td>mattbenv@udel.edu</td>
+                <td>wgriffin@udel.edu</td>
+                <td>2880</td>
+                <td>4720</td>
+                <td>7520</td>
+              </tr>
+            </tbody>
+          </table>
+          <hr>
 </body>
 
 
@@ -117,6 +229,31 @@
         const docRef = await getDocs(ref);
         console.log(docRef);
     } */
+    //Making a GetDocument() function that overloads GetDocument(username) and populates a table
+    /* async function GetADocument(name) {
+        var ref = doc(db, "Users", name);
+        const docSnap = await getDoc(ref);
+        if (docSnap.exists()) {
+            // docSnap.data(); how to get specific value of data.
+            usernamebox.value = docSnap.data().username;
+            biobox.value = docSnap.data().bio;
+            birthdaybox.value = docSnap.data().birthday;
+            emailbox.value= docSnap.data().email;
+            followersbox.value= docSnap.data().followers;
+            followingbox.value= docSnap.data().following;
+            friendsbox.value= docSnap.data().friends;
+            postbox.value= docSnap.data().post;
+            repostedbox.value = docSnap.data().repost;
+            taggedinbox.value = docSnap.data().taggedIn;
+            uidbox.value = docSnap.data().uid;
+            postsclickedbox.value = docSnap.data().postsclicked;
+            console.log("Document data:", docSnap.data());
+            alert("User: " + usernamebox.value + " has been located");
+        }
+        else {
+            alert("no such document");
+        }
+    } */
 
     //getting a document
     async function GetADocument() {
@@ -135,6 +272,7 @@
             repostedbox.value = docSnap.data().repost;
             taggedinbox.value = docSnap.data().taggedIn;
             uidbox.value = docSnap.data().uid;
+            postsclickedbox.value = docSnap.data().postsclicked;
             console.log("Document data:", docSnap.data());
             alert("User: " + usernamebox.value + " has been located");
         }
@@ -182,6 +320,7 @@
     const userList = document.querySelector('#user-list');
 
 </script>
+
 
 
 </html>
