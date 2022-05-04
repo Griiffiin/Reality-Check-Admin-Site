@@ -1,12 +1,11 @@
 <html>
     <head>
         <link rel="stylesheet" href="styler.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     </head>
-<button id="goToHome" type="button" class="btn btn-md btn-dark " onclick="homeRedirect()" >Home Page</button>
-<div id="centered_blue"><h2>User Customizability</h2></div>
-<div id="txt"><div id="orange"><h2>Customize User Features</h2></div></div>
+
 <script src="functionholder.js"></script>
-<hr>
 
 <head>
     <meta charset="UTF-8">
@@ -22,35 +21,52 @@
 </head>
 
 <body>
-    <label>username</label><input id="usernamebox" type="text">
-    <button id="Selbtn">Check DB for username</button>
-    <hr>
-    <label>bio</label><input id="biobox" type="text">
-    <hr>
-    <label>birthday</label><input id="birthdaybox" type="text">
-    <hr>
-    <label>email</label><input id="emailbox" type="text">
-    <hr>
-    <label>followers</label><input id="followersbox" type="text">
-    <hr>
-    <label>following</label><input id="followingbox" type="text">
-    <hr>
-    <label>friends</label><input id="friendsbox" type="text">
-    <hr>
-    <label>post</label><input id="postbox" type="text">
-    <hr>
-    <label>reposted</label><input id="repostedbox" type="text">
-    <hr>
-    <label>taggedin</label><input id="taggedinbox" type="text">
-    <hr>
-    <label>uid</label><input id="uidbox" type="text">
-    <hr>
-    <label>postsclicked</label><input id="postsclickedbox" type="text">
-    <hr>
-    <button id="Delbtn">Populate user data below</button>
-    <button id="Insbtn">Insert</button>
-    <button id="Updbtn">Update</button>
-
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse justify-content-lg-center" id="navbarsExample08">
+                <ul class="navbar-nav">
+                  <li class="nav-item homeBtn">
+                    <a class="nav-link active" aria-current="page" href="#"><div class="h2" onclick="homeRedirect()">Reality Check Admin Portal</div></a>
+                  </li>
+                </ul>
+              </div>
+        </div>    
+    </nav>
+    <div class="text-center mt-3">
+      <label>username</label><input id="usernamebox" type="text">
+      <button id="Selbtn">Check DB for username</button>
+      <hr>
+      <label>Bio</label><input id="biobox" type="text">
+      <hr>
+      <label>Birthday</label><input id="birthdaybox" type="text">
+      <hr>
+      <label>Email</label><input id="emailbox" type="text">
+      <hr>
+      <label>Followers</label><input id="followersbox" type="text">
+      <hr>
+      <label>Following</label><input id="followingbox" type="text">
+      <hr>
+      <label>Friends</label><input id="friendsbox" type="text">
+      <hr>
+      <label>Post</label><input id="postbox" type="text">
+      <hr>
+      <label>Reposted</label><input id="repostedbox" type="text">
+      <hr>
+      <label>Taggedin</label><input id="taggedinbox" type="text">
+      <hr>
+      <label>UID</label><input id="uidbox" type="text">
+      <hr>
+      <label>Posts-clicked</label><input id="postsclickedbox" type="text">
+      <hr>
+      <button id="Delbtn">Populate user data below</button>
+      
+      <button id="Insbtn">Insert</button>
+      <button id="Updbtn">Update</button>
+    </div>
+    
     <div class="content">
         <form id="Add-user-form"></form>
         <u1 id="user-list"> </u1>

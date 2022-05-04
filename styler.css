@@ -18,14 +18,14 @@ ul{
     padding: 0;
 }
 
-li{
+li:not(.homeBtn){
     padding: 50px;
     background: #f6f6f6;
     font-size: 20px;
     color: #555;
     position: relative;
     border-bottom: 1px solid #e6e6e6;
-    height: 46px;
+    height: relative;
 }
 
 li:nth-child(even){
@@ -43,16 +43,8 @@ li span:nth-child(2){
     color: #999;
 }
 
-li div{
-    position: absolute;
-    top: 0;
-    right: 0px;
-    background: rgba(230, 14, 14, 0.6);
-    width: 40px;
-    text-align: center;
-    padding: 10px 0;
-    font-weight:  bold;
-    cursor:  pointer;
+label {
+    margin-right: 15px;
 }
 
 form input{
@@ -83,7 +75,7 @@ form:after{
 
 button{
     border: 0;
-    background: #fff;
+    background: rgb(0, 0, 0);
     border-radius: 10px;
     border-color: black;
     padding: 8px;
@@ -92,5 +84,5 @@ button{
     font-weight: bold;
     font-family: ubuntu;
     letter-spacing: 1px;
-    color: #999;
+    color: rgb(255, 255, 255);
 }
